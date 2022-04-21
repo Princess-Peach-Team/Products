@@ -1,0 +1,467 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "array",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": [],
+    "examples": [
+        [
+            {
+                "id": 1,
+                "name": "Camo Onesie",
+                "slogan": "Blend in to your crowd",
+                "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+                "category": "Jackets",
+                "default_price": "140",
+                "features": [
+                    {
+                        "feature": "Sole",
+                        "value": "Rubber"
+                    }
+                ],
+                "styles": [
+                    {
+                        "style_id": 1,
+                        "name": "Forest Green & Black",
+                        "original_price": "140",
+                        "sale_price": "0",
+                        "default?": true,
+                        "photos": [
+                            {
+                                "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                                "url": "urlplaceholder/style_1_photo_number.jpg"
+                            }
+                        ]
+                    }
+                ],
+                "skus": {
+                    "37": {
+                        "quantity": 8,
+                        "size": "XS"
+                    }
+                }
+            }
+        ]
+    ],
+    "additionalItems": true,
+    "items": {
+        "$id": "#/items",
+        "anyOf": [
+            {
+                "$id": "#/items/anyOf/0",
+                "type": "object",
+                "title": "The first anyOf schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                    {
+                        "id": 1,
+                        "name": "Camo Onesie",
+                        "slogan": "Blend in to your crowd",
+                        "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+                        "category": "Jackets",
+                        "default_price": "140",
+                        "features": [
+                            {
+                                "feature": "Sole",
+                                "value": "Rubber"
+                            }
+                        ],
+                        "styles": [
+                            {
+                                "style_id": 1,
+                                "name": "Forest Green & Black",
+                                "original_price": "140",
+                                "sale_price": "0",
+                                "default?": true,
+                                "photos": [
+                                    {
+                                        "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                                        "url": "urlplaceholder/style_1_photo_number.jpg"
+                                    }
+                                ]
+                            }
+                        ],
+                        "skus": {
+                            "37": {
+                                "quantity": 8,
+                                "size": "XS"
+                            }
+                        }
+                    }
+                ],
+                "required": [
+                    "id",
+                    "name",
+                    "slogan",
+                    "description",
+                    "category",
+                    "default_price",
+                    "features",
+                    "styles",
+                    "skus"
+                ],
+                "properties": {
+                    "id": {
+                        "$id": "#/items/anyOf/0/properties/id",
+                        "type": "integer",
+                        "title": "The id schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 0,
+                        "examples": [
+                            1
+                        ]
+                    },
+                    "name": {
+                        "$id": "#/items/anyOf/0/properties/name",
+                        "type": "string",
+                        "title": "The name schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "Camo Onesie"
+                        ]
+                    },
+                    "slogan": {
+                        "$id": "#/items/anyOf/0/properties/slogan",
+                        "type": "string",
+                        "title": "The slogan schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "Blend in to your crowd"
+                        ]
+                    },
+                    "description": {
+                        "$id": "#/items/anyOf/0/properties/description",
+                        "type": "string",
+                        "title": "The description schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings."
+                        ]
+                    },
+                    "category": {
+                        "$id": "#/items/anyOf/0/properties/category",
+                        "type": "string",
+                        "title": "The category schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "Jackets"
+                        ]
+                    },
+                    "default_price": {
+                        "$id": "#/items/anyOf/0/properties/default_price",
+                        "type": "string",
+                        "title": "The default_price schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "140"
+                        ]
+                    },
+                    "features": {
+                        "$id": "#/items/anyOf/0/properties/features",
+                        "type": "array",
+                        "title": "The features schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": [],
+                        "examples": [
+                            [
+                                {
+                                    "feature": "Sole",
+                                    "value": "Rubber"
+                                }
+                            ]
+                        ],
+                        "additionalItems": true,
+                        "items": {
+                            "$id": "#/items/anyOf/0/properties/features/items",
+                            "anyOf": [
+                                {
+                                    "$id": "#/items/anyOf/0/properties/features/items/anyOf/0",
+                                    "type": "object",
+                                    "title": "The first anyOf schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": {},
+                                    "examples": [
+                                        {
+                                            "feature": "Sole",
+                                            "value": "Rubber"
+                                        }
+                                    ],
+                                    "required": [
+                                        "feature",
+                                        "value"
+                                    ],
+                                    "properties": {
+                                        "feature": {
+                                            "$id": "#/items/anyOf/0/properties/features/items/anyOf/0/properties/feature",
+                                            "type": "string",
+                                            "title": "The feature schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "Sole"
+                                            ]
+                                        },
+                                        "value": {
+                                            "$id": "#/items/anyOf/0/properties/features/items/anyOf/0/properties/value",
+                                            "type": "string",
+                                            "title": "The value schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "Rubber"
+                                            ]
+                                        }
+                                    },
+                                    "additionalProperties": true
+                                }
+                            ]
+                        }
+                    },
+                    "styles": {
+                        "$id": "#/items/anyOf/0/properties/styles",
+                        "type": "array",
+                        "title": "The styles schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": [],
+                        "examples": [
+                            [
+                                {
+                                    "style_id": 1,
+                                    "name": "Forest Green & Black",
+                                    "original_price": "140",
+                                    "sale_price": "0",
+                                    "default?": true,
+                                    "photos": [
+                                        {
+                                            "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                                            "url": "urlplaceholder/style_1_photo_number.jpg"
+                                        }
+                                    ]
+                                }
+                            ]
+                        ],
+                        "additionalItems": true,
+                        "items": {
+                            "$id": "#/items/anyOf/0/properties/styles/items",
+                            "anyOf": [
+                                {
+                                    "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0",
+                                    "type": "object",
+                                    "title": "The first anyOf schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": {},
+                                    "examples": [
+                                        {
+                                            "style_id": 1,
+                                            "name": "Forest Green & Black",
+                                            "original_price": "140",
+                                            "sale_price": "0",
+                                            "default?": true,
+                                            "photos": [
+                                                {
+                                                    "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                                                    "url": "urlplaceholder/style_1_photo_number.jpg"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "required": [
+                                        "style_id",
+                                        "name",
+                                        "original_price",
+                                        "sale_price",
+                                        "default?",
+                                        "photos"
+                                    ],
+                                    "properties": {
+                                        "style_id": {
+                                            "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/style_id",
+                                            "type": "integer",
+                                            "title": "The style_id schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": 0,
+                                            "examples": [
+                                                1
+                                            ]
+                                        },
+                                        "name": {
+                                            "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/name",
+                                            "type": "string",
+                                            "title": "The name schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "Forest Green & Black"
+                                            ]
+                                        },
+                                        "original_price": {
+                                            "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/original_price",
+                                            "type": "string",
+                                            "title": "The original_price schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "140"
+                                            ]
+                                        },
+                                        "sale_price": {
+                                            "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/sale_price",
+                                            "type": "string",
+                                            "title": "The sale_price schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "0"
+                                            ]
+                                        },
+                                        "default?": {
+                                            "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/default%3F",
+                                            "type": "boolean",
+                                            "title": "The default? schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": false,
+                                            "examples": [
+                                                true
+                                            ]
+                                        },
+                                        "photos": {
+                                            "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/photos",
+                                            "type": "array",
+                                            "title": "The photos schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": [],
+                                            "examples": [
+                                                [
+                                                    {
+                                                        "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                                                        "url": "urlplaceholder/style_1_photo_number.jpg"
+                                                    }
+                                                ]
+                                            ],
+                                            "additionalItems": true,
+                                            "items": {
+                                                "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/photos/items",
+                                                "anyOf": [
+                                                    {
+                                                        "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/photos/items/anyOf/0",
+                                                        "type": "object",
+                                                        "title": "The first anyOf schema",
+                                                        "description": "An explanation about the purpose of this instance.",
+                                                        "default": {},
+                                                        "examples": [
+                                                            {
+                                                                "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                                                                "url": "urlplaceholder/style_1_photo_number.jpg"
+                                                            }
+                                                        ],
+                                                        "required": [
+                                                            "thumbnail_url",
+                                                            "url"
+                                                        ],
+                                                        "properties": {
+                                                            "thumbnail_url": {
+                                                                "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/photos/items/anyOf/0/properties/thumbnail_url",
+                                                                "type": "string",
+                                                                "title": "The thumbnail_url schema",
+                                                                "description": "An explanation about the purpose of this instance.",
+                                                                "default": "",
+                                                                "examples": [
+                                                                    "urlplaceholder/style_1_photo_number_thumbnail.jpg"
+                                                                ]
+                                                            },
+                                                            "url": {
+                                                                "$id": "#/items/anyOf/0/properties/styles/items/anyOf/0/properties/photos/items/anyOf/0/properties/url",
+                                                                "type": "string",
+                                                                "title": "The url schema",
+                                                                "description": "An explanation about the purpose of this instance.",
+                                                                "default": "",
+                                                                "examples": [
+                                                                    "urlplaceholder/style_1_photo_number.jpg"
+                                                                ]
+                                                            }
+                                                        },
+                                                        "additionalProperties": true
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "additionalProperties": true
+                                }
+                            ]
+                        }
+                    },
+                    "skus": {
+                        "$id": "#/items/anyOf/0/properties/skus",
+                        "type": "object",
+                        "title": "The skus schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "37": {
+                                    "quantity": 8,
+                                    "size": "XS"
+                                }
+                            }
+                        ],
+                        "required": [
+                            "37"
+                        ],
+                        "properties": {
+                            "37": {
+                                "$id": "#/items/anyOf/0/properties/skus/properties/37",
+                                "type": "object",
+                                "title": "The 37 schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": {},
+                                "examples": [
+                                    {
+                                        "quantity": 8,
+                                        "size": "XS"
+                                    }
+                                ],
+                                "required": [
+                                    "quantity",
+                                    "size"
+                                ],
+                                "properties": {
+                                    "quantity": {
+                                        "$id": "#/items/anyOf/0/properties/skus/properties/37/properties/quantity",
+                                        "type": "integer",
+                                        "title": "The quantity schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": 0,
+                                        "examples": [
+                                            8
+                                        ]
+                                    },
+                                    "size": {
+                                        "$id": "#/items/anyOf/0/properties/skus/properties/37/properties/size",
+                                        "type": "string",
+                                        "title": "The size schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": "",
+                                        "examples": [
+                                            "XS"
+                                        ]
+                                    }
+                                },
+                                "additionalProperties": true
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                },
+                "additionalProperties": true
+            }
+        ]
+    }
+}
