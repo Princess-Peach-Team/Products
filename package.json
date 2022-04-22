@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "nodemon server/index.js"
   },
   "author": "Andy",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.3",
     "mongoose": "^6.3.0",
+    "nodemon": "^2.0.15",
     "pg": "^8.7.3"
   }
 }
