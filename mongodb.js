@@ -24,7 +24,7 @@ const stylesSchema = new mongoose.Schema({
 const featuresSchema = new mongoose.Schema({
   id: Number,
   product_id: Number,
-  featur: String,
+  feature: String,
   value: String
 }
 );
