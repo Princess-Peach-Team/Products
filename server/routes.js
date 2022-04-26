@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
 
 router.get('/:product_id', (req, res) => {
   let id = req.params.product_id;
+  console.log('GET /products')
   query()
     .then(client => {
       client
@@ -57,74 +58,80 @@ router.get('/:product_id', (req, res) => {
 
 router.get('/:product_id/styles', (req, res) => {
   let id = req.params.product_id;
+  console.log('GET product/styles');
   query()
     .then(client => {
       client
-        // .query(`
-        //   SELECT
-        //     styles.productId AS product_id,
-        //     (styles.id AS style_id,
-        //     styles.style_name AS name,
-        //     styles.original_price AS original_price,
-        //     styles.sale_price AS sale_price,
-        //     styles.default_style AS "default\?",
-        //     (array_agg(
-        //       DISTINCT jsonb_build_object(
-        //       'id', photos.id,
-        //       'thumbnail_url', photos.thumbnail_url,
-        //       'url', photos.url
-        //       )
-        //     )) AS photos,
-        //     (json_object_agg(
-        //       skus.id,
-        //       json_build_object(
-        //         'quantity', skus.quantity,
-        //         'size', skus.size
-        //       )
-        //     )) AS skus) AS results
-        //   FROM styles
-        //   LEFT JOIN photos ON photos.styleid = styles.id
-        //   LEFT JOIN skus ON skus.styleId = styles.id
-        //   WHERE styles.productId = ${id}
-        //   GROUP BY styles.id
-        // `)
         .query(`
           SELECT
-            styles.productId AS product_id,
-            (json_build_array(
-            json_build_object(
-            'style_id', styles.id,
-            'name', styles.style_name,
-            'original_price', styles.original_price,
-            'sale_price', (SELECT CASE
+            styles.id AS style_id,
+            styles.style_name AS name,
+            styles.original_price AS original_price,
+            (SELECT CASE
               when styles.sale_price = 'null' then '0'
               else styles.sale_price
-              end),
-            'default\?', styles.default_style,
-            'photos', (array_agg(
+            end) AS sale_price,
+            styles.default_style AS "default\?",
+            (array_agg(
               DISTINCT jsonb_build_object(
               'id', photos.id,
               'thumbnail_url', photos.thumbnail_url,
               'url', photos.url
               )
-            )),
-            'skus', (json_object_agg(
+            )) AS photos,
+            (json_object_agg(
               skus.id,
               json_build_object(
                 'quantity', skus.quantity,
                 'size', skus.size
-            )))
-            ))) AS results
+              )
+            ) FILTER (WHERE skus.id IS NOT NULL)) AS skus
           FROM styles
           LEFT JOIN photos ON photos.styleid = styles.id
           LEFT JOIN skus ON skus.styleId = styles.id
           WHERE styles.productId = ${id}
           GROUP BY styles.id
         `)
+        // .query(`
+        //   SELECT
+        //     styles.productId AS product_id,
+        //     (json_build_array(
+        //     json_build_object(
+        //     'style_id', styles.id,
+        //     'name', styles.style_name,
+        //     'original_price', styles.original_price,
+        //     'sale_price', (SELECT CASE
+        //       when styles.sale_price = 'null' then '0'
+        //       else styles.sale_price
+        //       end),
+        //     'default\?', styles.default_style,
+        //     'photos', (array_agg(
+        //       DISTINCT jsonb_build_object(
+        //       'id', photos.id,
+        //       'thumbnail_url', photos.thumbnail_url,
+        //       'url', photos.url
+        //       )
+        //     )),
+        //     'skus', (json_object_agg(
+        //       skus.id,
+        //       json_build_object(
+        //         'quantity', skus.quantity,
+        //         'size', skus.size
+        //     )))
+        //     ))) AS results
+        //   FROM styles
+        //   LEFT JOIN photos ON photos.styleid = styles.id
+        //   LEFT JOIN skus ON skus.styleId = styles.id
+        //   WHERE styles.productId = ${id}
+        //   GROUP BY styles.id
+        // `)
         .then((result) => {
           client.release();
-          console.log(result.rows[0]);
-          res.send(result.rows[0])
+          let resultObj = {
+            product_id: id,
+            results: result.rows
+          };
+          res.send(resultObj);
         })
         .catch((err) => {
           console.log(err);
@@ -135,6 +142,7 @@ router.get('/:product_id/styles', (req, res) => {
 
 router.get('/:product_id/related', (req, res) => {
   let id = req.params.product_id;
+  console.log('GET /products/related');
   query()
     .then(client => {
       client
