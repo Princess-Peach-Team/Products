@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS styles (
   PRIMARY KEY(id)
 );
 
+CREATE INDEX productId_key ON styles(productId);
+
 COPY styles
 FROM '/Users/andy/Desktop/HackReactor/SDC/styles.csv'
 DELIMITER ','
@@ -53,6 +55,8 @@ CREATE TABLE IF NOT EXISTS related (
   related_product_id INT REFERENCES products(id)
 );
 
+CREATE INDEX current_idx ON related(current_product_id);
+
 COPY related(id, current_product_id, related_product_id)
 FROM '/Users/andy/Desktop/HackReactor/SDC/related.csv'
 DELIMITER ','
@@ -66,6 +70,8 @@ CREATE TABLE IF NOT EXISTS skus (
   PRIMARY KEY(id)
 );
 
+CREATE INDEX styleId_idx ON skus(styleId);
+
 COPY skus
 FROM '/Users/andy/Desktop/HackReactor/SDC/skus.csv'
 DELIMITER ','
@@ -78,6 +84,8 @@ CREATE TABLE IF NOT EXISTS photos (
   thumbnail_url VARCHAR,
   PRIMARY KEY(id)
 );
+
+CREATE INDEX styleId ON photos(styleId);
 
 COPY photos
 FROM '/Users/andy/Desktop/HackReactor/SDC/photos.csv'

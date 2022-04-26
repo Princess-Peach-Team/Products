@@ -79,13 +79,13 @@ router.get('/:product_id/styles', (req, res) => {
               'url', photos.url
               )
             )) AS photos,
-            (json_object_agg(
+            COALESCE (json_object_agg(
               skus.id,
               json_build_object(
                 'quantity', skus.quantity,
                 'size', skus.size
               )
-            ) FILTER (WHERE skus.id IS NOT NULL)) AS skus
+            ) FILTER (WHERE skus.id IS NOT NULL), '{}'::JSON) AS skus
           FROM styles
           LEFT JOIN photos ON photos.styleid = styles.id
           LEFT JOIN skus ON skus.styleId = styles.id
@@ -148,9 +148,9 @@ router.get('/:product_id/related', (req, res) => {
       client
         .query(`
           SELECT
-          (array_agg(
-            related_product_id
-          ))
+            (array_agg(
+              related_product_id
+            ))
           FROM related
           WHERE current_product_id = ${id}
         `)
