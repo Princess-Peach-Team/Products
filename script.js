@@ -4,7 +4,7 @@ import { sleep } from 'k6';
 // const db = sql.open('postgres', 'mydb');
 
 export const options = {
-  vus: 10,
+  vus: 100,
   duration: '30s',
 };
 
