@@ -74,7 +74,6 @@ router.get('/:product_id/styles', (req, res) => {
             styles.default_style AS "default\?",
             (array_agg(
               DISTINCT jsonb_build_object(
-              'id', photos.id,
               'thumbnail_url', photos.thumbnail_url,
               'url', photos.url
               )
