@@ -58,7 +58,7 @@ router.get('/:product_id', (req, res) => {
 
 router.get('/:product_id/styles', (req, res) => {
   let id = req.params.product_id;
-  console.log('GET product/styles');
+  // console.log('GET product/styles');
   query()
     .then(client => {
       client
@@ -141,7 +141,7 @@ router.get('/:product_id/styles', (req, res) => {
 
 router.get('/:product_id/related', (req, res) => {
   let id = req.params.product_id;
-  console.log('GET /products/related');
+  // console.log('GET /products/related');
   query()
     .then(client => {
       client
