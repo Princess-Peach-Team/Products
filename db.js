@@ -3,7 +3,7 @@ const pool = new Pool({
   user: "andy",
   port: 5432,
   database: "mydb",
-  host: "54.193.114.123"
+  host: "54.193.9.246"
 })
 
 // pool.connect()
